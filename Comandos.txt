@@ -1,0 +1,12 @@
+aws dynamodb create-table \ 
+ --table-name Banco \ 
+AttributeName=Nome,AttributeType=50 \ 
+AttributeName=AgenciaConta, AttributeType=20 \ 
+--key-schema \ 
+AttributeName=Nome,KeyType=HASH \ 
+AttributeName=AgenciaConta,KeyType=Range \ 
+--provisioned-throughput \ 
+ReadCapacityUnits=10,WriteCapacityUnits=5
+
+aws dynamodb put-item \ 
+--table-name Banco \ --item file://Antonio.json
